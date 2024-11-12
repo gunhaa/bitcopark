@@ -1,6 +1,6 @@
 
-## 고수 개발자가 되기 위한 스터디🔥
-- 고수 개발자가 될때까지 동안 진행되는 **스프링 boot 학습 & 스프링 프로젝트 리팩토링** 입니다.
+## 깊이있는 개발자가 되기 위한 스터디🔥
+- 깊이있는 개발자가 될때까지 동안 진행되는 **CS & 스프링 boot 학습 & 스프링 프로젝트 리팩토링** 입니다.
 - 매 주 **✔월요일 오전10:00** 까지 Jira를 통해 주어진 학습 목표를 완료하고, 광진구 1인 가구 센터에 모여서 6시간 동안 스터디를 진행합니다.
 ![images](/src/images/where.png)
     - Sprint의 분량을 학습 후 정리해서 질문과 답변 형식으로 스터디를 진행합니다. 
@@ -10,6 +10,9 @@
 
 <br>
 <br>
+
+### 📚 STUDY
+- 우아한형제들 최연소 기술이사 출신 김영한의 스프링 완전 정복 로드맵 https://www.inflearn.com/roadmaps/373
 
 ###  소스 코드 업로드 및 리뷰 요청 방법
 1. Main branch에서 새 branch를 생성한다.
@@ -31,8 +34,6 @@
     > ex) ~ 하는 게 어떨까요? / ~ 하는 것을 제안합니다. / ~ 부분은 ~ 문제가 있는 것 같은데 괜찮을까요?
 - 코드 작성자에게 피드백하는 것이 아닌, 코드 자체를 피드백한다는 생각으로 리뷰한다.
 
-#### 📚 References
-- 우아한형제들 최연소 기술이사 출신 김영한의 스프링 완전 정복 https://www.inflearn.com/roadmaps/373
 
 <br>
 
@@ -93,24 +94,28 @@ body
 
 ### 🔹 Directory 구조
 ```
-└── 📂HGH
-       ├── 📂Spring1
-       │      ├── 💾수업파일.java
-       │      └── 💾...
-       ├── 📂md
-       └── 📂images
-└── 📂BJH
-       ├── 📂Spring1
-       │      ├── 💾수업파일.java
-       │      └── 💾...
-       ├── 📂md
-       └── 📂images
-└── 📂LJW
-       ├── 📂Spring1
-       │      ├── 💾수업파일.java
-       │      └── 💾...
-       ├── 📂md
-       └── 📂images
+📂 People
+├── 📂Code
+│   ├── 📂hello-project1
+│   │   ├── 💾Example1.java
+│   │   ├── 💾Example2.java
+│   │   └── 💾...
+│   ├── 📂hello-project2
+│   │   ├── 💾Example1.java
+│   │   └── 💾...
+│   ├── 📂hello-project3
+│   │   ├── 💾Example1.java
+│   │   └── 💾...
+├── 📂images(README.md)
+│   ├── 📷image1.jpg
+│   ├── 📷image2.png
+│   └── 📷...
+└── 📂md
+    ├── 📂hello-project1
+    │   └── 📄${topic}.md
+    ├── 📂hello-project2
+    │   └── 📄${topic}.md
+    └── 📄{$peopleName}.md
 ```
 
 <br>
