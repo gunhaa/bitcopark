@@ -66,3 +66,105 @@ Service의 메소드는 비즈니스 로직과 가깝게 직관적으로 만들�
 ### Repository
 
 보통 개발스러운 용어를 선택한다.
+
+## 테스트 케이스 만들기
+
+> 테스트 케이스 메소드는 한글로 해도 상관이 없고, 실제로 많이 사용한다.
+
+### given when then 문법
+
+> given : 무언가가 주어졌을때
+
+> when : 이거를 실행했을때
+
+> then : 결과가 이게 나와야함
+
+- 사용 권장 문법
+- 직관적으로 이해하기가 쉽다
+- 상황에 맞지 않을때도 있지만, 이 것을 기반으로 바꾸는 것을 추천한다.
+
+#### 테스트에서 가장 중요한 점
+> 엣지 케이스를 잘 확인해야한다.
+> 일반적인 플로우의 테스트는 반쪽짜리 테스트이다.
+
+#### 편하게 쓰기 위한 문법
+```java
+        assertThrows(IllegalStateException.class , ()-> {
+            memberService.join(member2);
+        });
+        // assertThrows(예외클래스, 예외가 발생할 상황)
+```
+#### 같은 인스턴스를 사용해야한다.
+
+```java
+// 변경 전
+        // MemberServiceTest
+    private final MemberRepository memberRepository = new MemoryMemberRepository();
+// 변경 후
+        // MemberService
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+    ...
+        // MemberServiceTest
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+
+
+    @BeforeEach
+    public void beforeEach(){
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
+    }
+
+    // memberService입장에서는 자신이 생성하지 않은 객체를 외부에서 주입받는다
+    // 이를 DI(Dependency Injection, 의존성 주입) 이라고 한다.
+```
+
+
+### JUnit 의 특징
+
+> 같은 패키지라면 import를 하지 않아도 사용이 가능함
+
+```java
+package hello.hello_spring.service;
+
+import hello.hello_spring.domain.Member;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+class MemberServiceTest {
+
+    MemberService memberService = new MemberService();
+        // import없이 사용 가능하다
+    ...
+```
+
+Java에서 **패키지(package)** 는 디렉토리와는 별개로 논리적인 네임스페이스(namespace) 개념이다. 즉, 물리적으로 파일이 존재하는 디렉토리 구조와, 파일이 속한 패키지는 일치할 필요는 없지만, 일반적으로 패키지명과 디렉토리 구조는 맞춰서 사용하는 것이 관례이다.
+
+#### 폴더가 다르더라도 패키지는 같을 수 있다
+하지만 물리적인 디렉토리 위치와 패키지 명칭은 반드시 일치할 필요는 없다. 즉, 폴더가 달라도 패키지는 동일할 수 있다.
+
+예를 들어, src/test/java 디렉토리 안에 있는 테스트 클래스가 src/main/java의 클래스들과 같은 패키지명을 가질 수 있다.
+
+예시:
+`src/main/java/hello/hello_spring/service/MemberService.java` 에 있는 클래스
+`src/test/java/hello/hello_spring/service/MemberServiceTest.java` 에 있는 클래스
+이 두 클래스는 다른 폴더에 위치하고 있지만, 같은 패키지 hello.hello_spring.service에 속할 수 있다. Java에서는 패키지명이 같다면, 패키지가 같다고 인식한다. **폴더가 다르더라도**.
+
+### Namespace
+
+> 네임스페이스(namespace)는 프로그램 내에서 이름의 충돌을 피하기 위해 서로 다른 식별자나 변수, 함수 등을 구분하는 논리적인 공간을 말한다. 특히 규모가 큰 프로젝트나 여러 라이브러리를 사용하는 경우, 같은 이름의 변수가 겹치는 것을 방지할 수 있어 유용하다. 
+
+> Java에서는 패키지를 사용해 네임스페이스를 구현한다. 패키지는 클래스들을 논리적으로 그룹화하여 이름 충돌을 방지하고, 코드의 가독성과 재사용성을 높이는 역할을 한다.
+
+#### 쓰는 이유
+- `package` 키워드를 사용해 각 클래스가 속한 패키지를 명시한다.
+- 다른 패키지에 있는 클래스는 `import` 키워드를 통해 가져온다.
+- 이로 인해 이름 충돌을 방지하고, 각 기능별로 모듈화해 가독성을 높일 수 있다
+
+
+
+

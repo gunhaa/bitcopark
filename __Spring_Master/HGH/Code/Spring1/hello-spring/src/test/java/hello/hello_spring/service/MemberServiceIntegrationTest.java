@@ -7,27 +7,22 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-class MemberServiceTest {
-
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-    @BeforeEach
-    public void beforeEach(){
-        // memberService입장에서는 자신이 생성하지 않은 객체를 외부에서 주입받는다
-        // 이를 DI(Dependency Injection, 의존성 주입) 이라고 한다.
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
+@SpringBootTest
+@Transactional
+class MemberServiceIntegrationTest {
 
-    @AfterEach
-    public void afterEach(){
-        memberRepository.clearStore();
-    }
+    // 테스트는 만든 후 하기때문에 가장 편한 방법으로 작성하면 된다.
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
+
 
     @Test
     void 회원가입() {
