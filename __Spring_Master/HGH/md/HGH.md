@@ -14,3 +14,13 @@
 - [스프링 BEAN/의존관계](Spring1/Bean.md)
 - [Spring과 DB](Spring1/DB.md)
 - [JPA & SpringData JPA](Spring1/JPA.md)
+
+2. 스프링 핵심 원리
+
+- [강의 목표](Spring2/Lecture.md)
+- [SPRING의 배경이야기](Spring2/ilovespring.md)
+- [SPRING이란?](Spring2/Spring.md)
+- [좋은 OOP](Spring2/OOP.md)
+- [SOLID](Spring2/SOLID.md)
+- [OOP & SPRING](Spring2/Opring.md)
+- [스프링 예제1(순수 자바코드)](Spring2/Example1.md)
