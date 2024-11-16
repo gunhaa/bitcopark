@@ -6,7 +6,10 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepositry;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     //private final MemberRepository memberRepository = new MemoryMemberRepositry();
@@ -21,6 +24,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy;
 
     // OrderServiceImpl은 이제 어떤 repository와 policy가 들어오는지 모르는, 대본만 보고 공연을 하는 배우와 같아진다.
+    @Autowired // 여러 의존 관계도 한번에 주입받을 수 있다.
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
@@ -33,4 +37,10 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId,itemName, itemPrice, discountPrice);
     }
+
+    // 싱글톤 테스트용도
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
+
 }

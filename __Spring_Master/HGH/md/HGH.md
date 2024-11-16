@@ -25,3 +25,8 @@
 - [OOP & SPRING](Spring2/Opring.md)
 - [스프링 예제1(순수 자바코드)](Spring2/Example1.md)
 - [IOC/DI/Container](Spring2/IOC_DI_Container.md)
+- [ApplicationContext/BeanFactory](Spring2/ApplicationContext.md)
+- [XML을 통한 설정](Spring2/XML.md)
+- [Bean](Spring2/Bean.md)
+- [Singleton](Spring2/Singleton.md)
+- [ComponentScan](Spring2/ComponentScan.md)

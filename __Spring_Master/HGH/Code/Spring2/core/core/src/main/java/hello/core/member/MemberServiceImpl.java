@@ -1,5 +1,9 @@
 package hello.core.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService{
 
     //private final MemberRepository memberRepository = new MemberMemoryRepository;
@@ -9,6 +13,8 @@ public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
 
+    // Component로 Bean으로 만들고, Autowired를 통해 자동 의존 관계 주입
+    @Autowired // ac.getBean(MemberRepository.class) 와 같은 기능을 수행한다.
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -22,4 +28,10 @@ public class MemberServiceImpl implements MemberService{
     public Member findMember(Long memberId) {
         return memberRepository.findById(memberId);
     }
+
+    // 싱글톤 테스트용
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
+
 }
