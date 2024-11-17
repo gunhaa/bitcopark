@@ -1,5 +1,8 @@
 package hello.core;
 
+import hello.core.member.MemberRepository;
+import hello.core.member.MemoryMemberRepositry;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -16,6 +19,11 @@ import org.springframework.context.annotation.FilterType;
 // 아무것도 작성되지 않았을때의 기본 값 : @Component이 붙은 설정 정보 클래스의 패키지가 시작 위치가 된다.
 public class AutoAppConfig {
 
-
+/*
+    @Bean(name="memoryMemberRepository")
+    MemberRepository memberRepository(){
+        return new MemoryMemberRepositry();
+    }
+*/
 
 }

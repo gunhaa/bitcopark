@@ -30,3 +30,8 @@
 - [Bean](Spring2/Bean.md)
 - [Singleton](Spring2/Singleton.md)
 - [ComponentScan](Spring2/ComponentScan.md)
+- [DI](Spring2/DI.md)
+- [롬복과 최신 트렌드](Spring2/Trend.md)
+- [조회 한 Bean이 모두 필요할때(List/Map)](Spring2/ListMap.md)
+- [자동/수동 의존 관계 주입, 어떤걸 사용해야함?](Spring2/Auto.md)
+- [LifeCycle](Spring2/LifeCycle.md)

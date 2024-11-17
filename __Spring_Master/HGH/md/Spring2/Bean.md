@@ -1,6 +1,6 @@
 # Bean
 
-![img1](../.../images/BeanDefinition1.png)
+![img1](../../images/BeanDefinition1.png)
 
 - BeanDefinition은 인터페이스이며, 메타정보를 저장한다.
 - 객체지향설계가 잘된 예시로써, 스프링 컨테이너는 하위에 대해서 모르고 BeanDefinition 인터페이스만을 바라본다.
