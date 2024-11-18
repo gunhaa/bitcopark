@@ -35,3 +35,4 @@
 - [조회 한 Bean이 모두 필요할때(List/Map)](Spring2/ListMap.md)
 - [자동/수동 의존 관계 주입, 어떤걸 사용해야함?](Spring2/Auto.md)
 - [LifeCycle](Spring2/LifeCycle.md)
+- [Scope](Spring2/Scope.md)
