@@ -66,11 +66,45 @@
 > 결과를 반환한다. 즉, getObject() 메서드도 스프링의 구현 클래스에서 정의된 방식대로 동작하여,
 > 스프링 컨테이너로부터 적절한 결과를 반환하는 것이다.
 
+3. 
+```java
+        ClientBean clientBean1 = ac.getBean(ClientBean.class);
+        int count1 = clientBean1.logic();
+        Assertions.assertThat(count1).isEqualTo(1);
+
+        ClientBean clientBean2 = ac.getBean(ClientBean.class);
+        int count2 = clientBean2.logic();
+        Assertions.assertThat(count2).isEqualTo(1);
+```
+- 위 클래스를 사용한다면 해당 테스트가 통과한다.
+- 왜? Provider를 사용하면  clientBean1, 2 객체는 요청 될때마다 동적으로 프로토타입 빈이 주입되는 상황이기 때문이다
+
+4. jakarata 제공 API로 사용 가능
+- 장점 : 다른 컨테이너에서 사용 가능/단순함
+- 단점 : 라이브러리 가져와야함/기능이 적음
+
+### Recap
+- 그래서 어디에 사용해야함?
+    - 의존 관계 주입이 완료된 새로운 객체가 필요하면 사용하면 된다.
+    - 하지만 막상 실무에서는 거의 사용할일이 없다.
+    - 하지만 중요한 개념이라서 반드시 알아야한다.
+    - 코드 분석할때 중요
 
 
 ## 웹 관련 스코프
 
-- Request : 웹 요청이 들어오고 나갈때까지 유지
-- Session : 웹 세션이 생성되고 종료될때까지 유지
-- application : 웹의 서블릿 컨텍스와 같은 범위로 유지된다.
+> 특징 : 웹 스코프는 웹 환경에서만 동작한다
+
+> 웹 스코프는 프로토타입과 다르게 프로토타입이 해당 스코프의 종료시점까지 관리한다. 따라서 종료 메서드가 호출된다.
+
+- Request : HTTP 요청 하나가 들어오고 나갈때까지 유지되는 스코프, HTTP 요청 마다 별도의 빈 인스턴스가 생성됨
+- Session : HTTP Session과 동일한 생명주기를 가진다
+- application : `ServletContext` 와 동일한 생명주기를 가지는 스코프
+- Websocket : 웹 소켓과 동일한 생명주기를 가지는 스코프
+
+![scope1](../../images/Scope1.png)
+
+- 클라이언트에서 요청을 받으면 `전용 객체` 가 생겨서 요청을 한 객체가 관리한다.
+- HTTP 요청 하나당 한개의 Request가 생성된다.
+- Response가 나가게 될때, 객체가 destroy되면서 라이프 사이클이 끝나게 된다.
 
