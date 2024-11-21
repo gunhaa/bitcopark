@@ -3,9 +3,11 @@
 
 - 깊이있는 개발자가 될때까지 동안 진행되는 **CS & Spring boot 학습 & Spring MVC 프로젝트 리팩토링** 입니다.
 - 매 주 **✔월요일 오전10:00** 까지 Jira를 통해 주어진 학습 목표를 완료하고, 광진구 1인 가구 센터에 모여서 5~6시간 동안 스터디를 진행합니다.
-![images](/src/images/where.png)
     - Sprint의 분량을 학습 후 정리해서 질문과 답변 형식으로 스터디를 진행합니다. 
-- 개발 관련 공부를 할때는 언제나 GatherTown에 접속 후 진행합니다.
+
+<img src="/src/images/where.png" alt="Refactoring" width="500" height="400">
+
+- 개발 관련 공부를 할때는 GatherTown에 접속 후 진행합니다.
     - 이슈가 있을 시 GatherTown 회의실에서 회의를 진행합니다. (마이크 on, 화면 공유on)
     - GatherTown을 통해 일일출석 체크를 진행합니다.
 
@@ -23,8 +25,9 @@
 <br>
 
 
-### CS 관련 책 읽고 토론하기
-<img src="/src/images/Refactoring.png" alt="Refactoring" width="400" height="400">
+### CS 관련 책 읽고 토론
+<img src="/src/images/Refactoring.png" alt="Refactoring" width="300" height="400">
+
 - 12월까지 읽어야 할 책 : 리팩터링
 - 읽은 후 리팩토링 작업 시작 예정
 - 각자의 브랜치에 md로 짧은 독후감 작성
@@ -75,7 +78,7 @@ type : subject
     > ex) hgh/1 <br>
     - branch 이름에 한글이 들어가면 문제가 생겨서 반드시 본인 이름을 영어 이니셜로 branch를 생성해 주세요!
 - 각 **강의마다 branch를 새롭게 생성**해서 정리한다.
-- 코드 리뷰 요청할 브랜치의 경우 `본인_이름(영어_이니셜⭕) / review(숫자)` 로 생성한다.
+- 코드 리뷰 요청할 브랜치의 경우 `본인_이름(영어_이니셜⭕) / review${숫자}` 로 생성한다.
 
 <br>
 
