@@ -3,6 +3,9 @@
 
 > [IntelliJ 유용한 단축키 모음](Spring1/IntelliJ.md)
 
+0. 스터디
+- 2주차 정리자료(Study/week2.md)
+
 1. 스프링 입문- 코드로 배우는 스프링 부트, 웹 MVC, DB접근 기술
 
 - [Spring Boot 기본세팅](Spring1/Setting.md)
@@ -36,3 +39,7 @@
 - [자동/수동 의존 관계 주입, 어떤걸 사용해야함?](Spring2/Auto.md)
 - [LifeCycle](Spring2/LifeCycle.md)
 - [Scope](Spring2/Scope.md)
+- [총정리](Spring2/Recap.md)
+
+3. HTTP 
+- [HTTP 정리](Spring2/HTTP.md)

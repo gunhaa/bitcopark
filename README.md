@@ -15,12 +15,22 @@
 ### 📚 STUDY
 - 우아한형제들 최연소 기술이사 출신 김영한의 스프링 완전 정복 로드맵 https://www.inflearn.com/roadmaps/373
 
-###  소스 코드 업로드/주간 목표 정리 방법
+###  소스 코드 업로드
 1. Main branch에서 새 branch를 생성한다.
 2. 학습한 내용을 **본인의 branch**에 push한다.
 3. 스터디에서 학습을 진행한 후, main에 pr한다.
 
 <br>
+
+
+### CS 관련 책 읽고 토론하기
+<img src="/src/images/Refactoring.png" alt="Refactoring" width="400" height="400">
+- 12월까지 읽어야 할 책 : 리팩터링
+- 읽은 후 리팩토링 작업 시작 예정
+- 각자의 브랜치에 md로 짧은 독후감 작성
+
+<br>
+
 
 ### 🔹 Code Review 요청
 - 새로운 브랜치를 생성후 학습한 내용을 바탕으로 리팩토링 후 스터디에서 리뷰를 요청한다. 
@@ -118,14 +128,14 @@ type : subject
     </td>
     <td align="center">
       <a href="https://github.com/">
-        <img src="https://mud-kage.kakaocdn.net/dn/ddUiy9/btsdGABygpb/MsARp4M5vZdcumFmyHKoN1/c360.jpg" width="110px" height="110px" alt=""/>
+        <img src="https://mud-kage.kakaocdn.net/dn/ddUiy9/btsdGABygpb/MsARp4M5vZdcumFmyHKoN1/c360.jpg" width="110px" height="90px" alt=""/>
         <br />
         <sub><b>배지환</b></sub></a><br />
         <a href="https://github.com/" title="Code">💻</a>
     </td>
     <td align="center">
       <a href="https://github.com/">
-        <img src="https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/cxuc/image/ouT5pWpIm1C2I8RVqlBhspj_qQA.jpg" width="110px;" height="110x" alt=""/><br />
+        <img src="https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/cxuc/image/ouT5pWpIm1C2I8RVqlBhspj_qQA.jpg" width="110px;" height="90px" alt=""/><br />
         <sub><b>이재원</b></sub></a><br />
         <a href="https://github.com/" title="Code">💻</a>
     </td>
