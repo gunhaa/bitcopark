@@ -1,12 +1,10 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -26,7 +24,7 @@ class MemoryMemberRepositoryTest {
 
         repository.save(member);
 
-        Member result = repository.findbyId(member.getId()).get();
+        Member result = repository.findById(member.getId()).get();
         // 검증 방법
         // System.out.println("result = " + (result == member));
         // Assertions.assertEquals(null, member);
@@ -43,7 +41,7 @@ class MemoryMemberRepositoryTest {
         member2.setName("spring2");
         repository.save(member2);
 
-        Member result = repository.findbyName("spring1").get();
+        Member result = repository.findByName("spring1").get();
 
         assertThat(result).isEqualTo(member1);
     }
