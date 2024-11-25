@@ -15,7 +15,9 @@
 <br>
 
 ### 📚 STUDY
-- 우아한형제들 최연소 기술이사 출신 김영한의 스프링 완전 정복 로드맵 https://www.inflearn.com/roadmaps/373
+- 우아한형제들 최연소 기술이사 출신 김영한의 스프링 완전 정복
+- CS 베스트셀러
+- Spring boot/JPA/Docker/CI/CD
 
 ###  소스 코드 업로드
 1. Main branch에서 새 branch를 생성한다.
@@ -25,10 +27,10 @@
 <br>
 
 
-### CS 관련 책 읽고 토론
+### CS 관련 책 읽기(12월)
 <img src="/src/images/Refactoring.png" alt="Refactoring" width="300" height="400">
 
-- 12월까지 읽어야 할 책 : 리팩터링
+- 읽어야 할 책 : 리팩터링
 - 읽은 후 리팩토링 작업 시작 예정
 - 각자의 브랜치에 md로 짧은 독후감 작성
 
@@ -54,10 +56,11 @@
 <br>
 
 ### 🔹 Commit Message 컨벤션
-```
-type : subject
 
 ```
+type : subject
+```
+
 #### ✔ Type
 - **Add**: 소스 코드 파일 추가
 - **Refactor**: 소스 코드 수정
@@ -77,13 +80,14 @@ type : subject
 - `본인_이름(영어_이니셜⭕)`/`숫자(n주차)`
     > ex) hgh/1 <br>
     - branch 이름에 한글이 들어가면 문제가 생겨서 반드시 본인 이름을 영어 이니셜로 branch를 생성해 주세요!
-- 각 **강의마다 branch를 새롭게 생성**해서 정리한다.
+- 각 주마다 branch를 새롭게 생성해서 정리한다.
 - 코드 리뷰 요청할 브랜치의 경우 `본인_이름(영어_이니셜⭕) / review${숫자}` 로 생성한다.
 
 <br>
 
 ### 🔹 Folder Naming 컨벤션
-- `Spring{$로드맵에서의 순서}`
+- `기술스택-{$강의이름}`
+- `기술스택-week{$n주차}`
 
 
 ### 🔹 File Naming 컨벤션
@@ -91,18 +95,18 @@ type : subject
 
 <br>
 
-### 🔹 Directory 구조
+### 🔹 Directory 구조 예제
 ```
 📂 People
 ├── 📂Code
-│   ├── 📂hello-project1
+│   ├── 📂SpringBoot - 실전! 스프링부트1
 │   │   ├── 💾Example1.java
 │   │   ├── 💾Example2.java
 │   │   └── 💾...
-│   ├── 📂hello-project2
+│   ├── 📂SpringBoot - 자바 ORM 표준 JPA
 │   │   ├── 💾Example1.java
 │   │   └── 💾...
-│   ├── 📂hello-project3
+│   ├── 📂DesignPattern - Proxy
 │   │   ├── 💾Example1.java
 │   │   └── 💾...
 ├── 📂images(README.md)
@@ -110,9 +114,9 @@ type : subject
 │   ├── 📷image2.png
 │   └── 📷...
 └── 📂md
-    ├── 📂hello-project1
+    ├── 📂Week1
     │   └── 📄${topic}.md
-    ├── 📂hello-project2
+    ├── 📂Week2
     │   └── 📄${topic}.md
     └── 📄{$peopleName}.md
 ```
