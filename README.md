@@ -15,9 +15,12 @@
 <br>
 
 ### 📚 STUDY
-- 우아한형제들 최연소 기술이사 출신 김영한의 스프링 완전 정복
+- 김영한의 스프링 완전 정복
 - CS 베스트셀러
-- Spring boot/JPA/Docker/CI/CD
+- Spring boot
+- JPA
+- Docker
+- CI/CD
 
 ###  소스 코드 업로드
 1. Main branch에서 새 branch를 생성한다.
@@ -87,11 +90,8 @@ type : subject
 
 ### 🔹 Folder Naming 컨벤션
 - `기술스택-{$강의이름}`
-- `기술스택-week{$n주차}`
+- `Week{$n주차}`
 
-
-### 🔹 File Naming 컨벤션
-- `수업에서 작성한 이름`
 
 <br>
 
@@ -106,7 +106,7 @@ type : subject
 │   ├── 📂SpringBoot - 자바 ORM 표준 JPA
 │   │   ├── 💾Example1.java
 │   │   └── 💾...
-│   ├── 📂DesignPattern - Proxy
+│   ├── 📂Week2
 │   │   ├── 💾Example1.java
 │   │   └── 💾...
 ├── 📂images(README.md)
