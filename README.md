@@ -79,7 +79,7 @@ type : subject
 
 <br>
 
-### 🔹 Branch Naming 컨벤션
+### 🔹 Branch 컨벤션
 - `본인_이름(영어_이니셜⭕)`/`숫자(n주차)`
     > ex) hgh/1 <br>
     - branch 이름에 한글이 들어가면 문제가 생겨서 반드시 본인 이름을 영어 이니셜로 branch를 생성해 주세요!
@@ -88,9 +88,10 @@ type : subject
 
 <br>
 
-### 🔹 Folder Naming 컨벤션
-- `기술스택-{$강의이름}`
-- `Week{$n주차}`
+### 🔹 Folder 컨벤션
+- `기술스택-{$강의이름}` / 특정 강의 내용 정리
+- `Week{$n주차}` / n주차 정리내용
+- 스터디에서 논의할 내용은 md-Recap폴더 안에 작성한다
 
 
 <br>
@@ -106,7 +107,7 @@ type : subject
 │   ├── 📂SpringBoot - 자바 ORM 표준 JPA
 │   │   ├── 💾Example1.java
 │   │   └── 💾...
-│   ├── 📂Week2
+│   ├── 📂Week1
 │   │   ├── 💾Example1.java
 │   │   └── 💾...
 ├── 📂images(README.md)
@@ -114,10 +115,11 @@ type : subject
 │   ├── 📷image2.png
 │   └── 📷...
 └── 📂md
-    ├── 📂Week1
+    ├── 📂SpringBoot - 실전! 스프링부트1
     │   └── 📄${topic}.md
-    ├── 📂Week2
-    │   └── 📄${topic}.md
+    ├── 📂Recap
+    │   └── 📄${Week1}.md
+    │   └── 📄${Week2}.md
     └── 📄{$peopleName}.md
 ```
 
