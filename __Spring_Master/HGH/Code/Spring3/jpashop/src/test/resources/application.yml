@@ -1,0 +1,20 @@
+spring:
+#  설정이 없다면, 기본적으로 h2 메모리를 이용해서 실행시킨다
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: aa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+##       show_sql: true
+#        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace

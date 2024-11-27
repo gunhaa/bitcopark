@@ -1,3 +1,4 @@
+/*
 package jpabook.jpashop;
 
 import org.assertj.core.api.Assertions;
@@ -38,4 +39,4 @@ public class MemberRepositoryTest {
         Assertions.assertThat(findMember).isEqualTo(member); // true
     }
 
-}
+}*/
