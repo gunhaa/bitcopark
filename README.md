@@ -21,6 +21,8 @@
 - JPA
 - Docker
 - CI/CD
+- linux
+- AWS
 
 ###  소스 코드 업로드
 1. Main branch에서 새 branch를 생성한다.
@@ -34,14 +36,14 @@
 <img src="/src/images/Refactoring.png" alt="Refactoring" width="300" height="400">
 
 - 읽어야 할 책 : 리팩터링
-- 읽은 후 리팩토링 작업 시작 예정
+- 읽은 후 기존 프로젝트 리팩토링 작업 시작
 - 각자의 브랜치에 md로 짧은 독후감 작성
 
 <br>
 
 
 ### 🔹 Code Review 요청
-- 새로운 브랜치를 생성후 학습한 내용을 바탕으로 리팩토링 후 스터디에서 리뷰를 요청한다. 
+- 새로운 브랜치를 생성후 학습한 내용을 바탕으로 리팩토링 후 코드 리뷰를 요청한다. 
 - 자유롭게 의견을 제시한다.
     - 잘했다고 생각하는 부분 칭찬하기
     - 개선이 필요한 부분 설명하기
@@ -131,7 +133,7 @@ type : subject
   <tr>
     <td align="center">
       <a href="https://github.com/gunhaa">
-        <img src="https://avatars.githubusercontent.com/u/168693235?s=400&u=22d141066b86a322e82f74b4420ab00fffd98add&v=4" width="110px;" alt=""/><br />
+        <img src="https://avatars.githubusercontent.com/u/168693235?s=400&u=22d141066b86a322e82f74b4420ab00fffd98add&v=4" width="110px;" height="90px" alt=""/><br />
         <sub><b>황건하</b></sub></a><br />
         <a href="https://github.com/gunhaa" title="Code">💻</a>
     </td>
