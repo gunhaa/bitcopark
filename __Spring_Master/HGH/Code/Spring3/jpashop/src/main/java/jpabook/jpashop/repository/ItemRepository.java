@@ -20,6 +20,7 @@ public class ItemRepository {
             // null 값인 객체는 완전히 새로 등록하는 객체
             em.persist(item);
         } else {
+            // 실무에서는 잘 사용할일이 없다.
             em.merge(item);
         }
     }
