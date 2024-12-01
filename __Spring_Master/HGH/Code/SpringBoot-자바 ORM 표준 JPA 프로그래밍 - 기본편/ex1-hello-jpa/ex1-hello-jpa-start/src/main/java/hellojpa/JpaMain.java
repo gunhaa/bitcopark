@@ -54,7 +54,38 @@ public class JpaMain {
 //            Member member = em.find(Member.class, 150L);
 //            member.setName("ZZZZZZZZZZZZZ");
             // 여기까지만으로 데이터 변경 가능
+
+/*            Member member = new Member();
+            member.setUsername("user1");
+
+            em.persist(member);*/
+
             System.out.println("===================");
+
+            Team team = new Team();
+            team.setName("TeamA");
+//            team.getMembers().add(member);
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setTeam(team);
+            em.persist(member);
+
+
+
+
+            em.flush();
+            em.clear();
+
+            // 1차 캐시에서 가져와서 insert문은 늦게 나간다.
+//            Member findMember = em.find(Member.class, member.getId());
+//            List<Member> members = findMember.getTeam().getMembers();
+//
+//            for (Member m : members) {
+//                System.out.println("m.getUsername() = " + m.getUsername());
+//            }
+
 
             // commit하는 시점에 EntityManager(영속성 컨텍스트)에 flush()가 호출되고,
             // flush()는 스냅샷(처음 객체 생성 상태)과 현재 Entity를 비교해서 차이가 있으면 업데이트한다.
