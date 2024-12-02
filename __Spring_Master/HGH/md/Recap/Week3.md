@@ -48,3 +48,115 @@
 
 ## RECAP
 > 리팩터링은 코드를 더 쉽게 이해하고, 수정하고, 확장할 수 있도록 개선하는 것이다. 이는 코드의 동작을 유지하면서 내부 설계를 개선하여 개발의 생산성을 높인다.
+
+# Reflection & Proxy in JPA
+
+> 구체적인 클래스 타입을 알지 못해도 그 클래스의 메소드, 타입, 변수들에 접근할 수 있도록 해주는 자바 API
+
+- 런타임에 지금 실행되고 있는 클래스를 가져와서 실행해야하는 경우
+
+- 동적으로 객체를 생성하고 메서드를 호출하는 방법
+
+- 자바의 리플렉션은 클래스, 인터페이스, 메소드들을 찾을 수 있고, 객체를 생성하거나 변수를 변경하거나 메소드를 호출할 수 있다.
+
+- JPA프록시 객체는 리플렉션을 통해서 만들어진다.
+
+## 예제
+
+### Entity
+
+```java
+public class Entity implements ParentInterface{
+
+    private Long id;
+    private String name;
+
+    public Entity() {
+    }
+
+    // ...
+    // getter , setter 생략
+
+    public void print(){
+        System.out.println("Entity print 출력 : id는 " + this.id + " 이름은 : " + this.name);
+    }
+}
+```
+
+### Reflection을 통한 Proxy 생성
+
+```java
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class ProxySample implements ParentInterface {
+
+    private Class<?> originalClazz;
+    private Object originalInstance;
+    private Long id;
+    private String name;
+
+
+    public ProxySample(Class<?> proxyClazz, Long id , String name) {
+        this.originalClazz = proxyClazz;
+        this.id = id;
+        this.name = name;
+    }
+
+    public void print(){
+                    // 기본 생성자를 통해 인스턴스를 만들어낸다
+        try {
+
+            // type narrowing 필요
+            originalInstance = originalClazz.getDeclaredConstructor().newInstance();
+            // 메소드 호출 오류 처리 필요
+            // 동적으로 필드 배열을 가져와서 처리해서 리팩토링 가능
+            Field idField = originalClazz.getDeclaredField("id");
+            Field nameField = originalClazz.getDeclaredField("name");
+
+            // 이런식으로 동적 처리 가능
+            Class<?> idType = idField.getType();
+            Class<?> nameType = nameField.getType();
+
+            // 여기도 동적으로 메소드배열 가져와서 리팩토링 가능
+            Method setId = originalClazz.getMethod("setId", idType);
+            Method setName = originalClazz.getMethod("setName", nameType);
+
+            setId.invoke(originalInstance ,  this.id);
+            setName.invoke(originalInstance,  this.name);
+
+            // 여기도
+            Method printMethod = originalClazz.getMethod("print");
+
+            printMethod.invoke(originalInstance);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println();
+    }
+
+```
+
+### 실행
+```java
+package com.note.week3;
+
+public class RuntimeClazz {
+
+    public static void main(String[] args) {
+
+
+        // 프록시 객체 생성
+        // 생성시에는 최소한의 자원으로 객체를 만들고
+        // 프록시의 print메소드 호출 시 원래 클래스의 필드값을 반환
+
+        ProxySample proxy = new ProxySample(Entity.class, 1L, "ReflectionProxySample");
+        proxy.print(); 
+        // 결과 -> Entity print 출력 : id는 1 이름은 : ReflectionProxySample
+
+    }
+}
+
+```
