@@ -8,7 +8,7 @@
 <img src="/src/images/where.png" alt="Refactoring" width="500" height="400">
 
 - 개발 관련 공부를 할때는 GatherTown에 접속 후 진행합니다.
-    - 이슈가 있을 시 GatherTown 회의실에서 회의를 진행합니다. (마이크 on, 화면 공유on)
+    - 이슈가 있을 시 GatherTown 회의실에서 회의를 진행합니다.
     - GatherTown을 통해 일일출석 체크를 진행합니다.
 
 <br>
@@ -37,7 +37,6 @@
 
 - 읽어야 할 책 : 리팩터링
 - 읽은 후 기존 프로젝트 리팩토링 작업 시작
-- 각자의 브랜치에 md로 짧은 독후감 작성
 
 <br>
 
@@ -55,8 +54,8 @@
 <br>
 
 ### 🔹 Pull Request 규칙
-- 스터디에서 발표한 주제를 다시 한 번 정리한 후 PR 요청한다.
-- 스터디에서 합의된 내용의 Branch를 병합시킨다.
+- 스터디에서 발표한 주제를 정리한 후 PR한다.
+- 스터디에서 진행한 내용의 Branch를 병합시킨다.
 
 <br>
 
@@ -69,8 +68,8 @@ type : subject
 #### ✔ Type
 - **Add**: 소스 코드 파일 추가
 - **Refactor**: 소스 코드 수정
-- **chore** : 기타 변경 사항(세부 내용 기재)
-- **docs**: 학습 내용 정리
+- **chore** : 기타 변경 사항
+- **docs**: md 내용 변경
 
 #### ✔ Subject
 - 50자 이하의 간단한 제목을 사용한다.
@@ -92,8 +91,7 @@ type : subject
 
 ### 🔹 Folder 컨벤션
 - `기술스택-{$강의이름}` / 특정 강의 내용 정리
-- `Week{$n주차}` / n주차 정리내용
-- 스터디에서 논의할 내용은 md-Recap폴더 안에 작성한다
+- 각 주차 정리 내용은 Recap폴더 안에 `Week{n}` 으로 작성한다
 
 
 <br>
@@ -117,12 +115,13 @@ type : subject
 │   ├── 📷image2.png
 │   └── 📷...
 └── 📂md
-    ├── 📂SpringBoot - 실전! 스프링부트1
-    │   └── 📄${topic}.md
-    ├── 📂Recap
-    │   └── 📄${Week1}.md
-    │   └── 📄${Week2}.md
-    └── 📄{$peopleName}.md
+│   ├── 📂SpringBoot - 실전! 스프링부트1
+│   │   └── 📄${topic1}.md
+│   │   └── 📄${topic2}.md
+│   └── 📄{$peopleName}.md
+│
+└── 📂Recap
+    └── 📄${주차별 스터디 요약}.md
 ```
 
 <br>
