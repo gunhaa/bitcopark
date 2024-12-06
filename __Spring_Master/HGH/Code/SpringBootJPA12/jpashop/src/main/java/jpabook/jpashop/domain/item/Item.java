@@ -1,6 +1,7 @@
-package jpabook.jpashop.domain;
+package jpabook.jpashop.domain.item;
 
 import jakarta.persistence.*;
+import jpabook.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "dtype")
 public abstract class Item {
 
     @Id
@@ -21,8 +24,14 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
-    @ManyToMany
-    private List<Category> categories = new ArrayList<Category>();
+    @ManyToMany(mappedBy = "items")
+    private List<Category> categories = new ArrayList<>();
 
+
+    // == 비즈니스 로직 ==
+
+    public void addStock(int quantity){
+        this.stockQuantity += quantity;
+    }
 
 }
