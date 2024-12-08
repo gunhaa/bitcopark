@@ -21,7 +21,7 @@ public class ItemService {
         itemRepository.save(item);
     }
 
-    public List<Item> findItems(Long id){
+    public List<Item> findItems(){
         return itemRepository.findAll();
     }
 
