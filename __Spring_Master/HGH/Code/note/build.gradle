@@ -21,7 +21,7 @@ configurations {
 
 repositories {
 	mavenCentral()
-}9666666
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
