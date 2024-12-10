@@ -11,11 +11,16 @@ spring:
     properties:
       hibernate:
 #         show_sql: true
-        format_sql: true
+#        format_sql: true
+#        highlight_sql: true
 
-logging.level:
-  org.hibernate.SQL: debug
-  org.hibernate.orm.jdbc.bind: trace
+#logging.level:
+#  org.hibernate.SQL: debug
+#  org.hibernate.orm.jdbc.bind: trace
 
 server:
   port: 80
+
+#
+#logging.level.p6spy: info
+#decorator.datasource.p6spy.enable-logging: true
