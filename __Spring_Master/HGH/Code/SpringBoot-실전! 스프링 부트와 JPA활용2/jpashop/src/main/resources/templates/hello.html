@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+
+<!-- HTML의 namespace를 thymeleaf로 준다
+ 네임스페이스는 XML 문서에서 태그나 속성이 어떤 특정 도구, 라이브러리, 또는 기술에 속해 있는지를 구분하기 위해 사용된다.
+  HTML5와 Thymeleaf가 모두 XML 기반의 문법을 따르기 때문에
+ 네임스페이스를 사용하여 Thymeleaf의 기능을 HTML 문서에서 명시적으로 구분할 수 있다.
+ -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'안녕하세요.sssss ' + ${data}" >안녕하세요. 손님</p>
+</body>
+</html>
