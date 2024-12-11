@@ -37,9 +37,9 @@ public class InitDb {
             Book book2 = createBook("JPA2 BOOK", 20000, 100);
             em.persist(book2);
 
-            OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 100);
+            OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 2);
             em.persist(orderItem1);
-            OrderItem orderItem2 = OrderItem.createOrderItem(book2, 20000, 100);
+            OrderItem orderItem2 = OrderItem.createOrderItem(book2, 20000, 3);
             em.persist(orderItem2);
 
             Delivery delivery = createDelivery(member);
@@ -58,9 +58,9 @@ public class InitDb {
             Book book2 = createBook("SPRING2 BOOK", 40000, 300);
             em.persist(book2);
 
-            OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 100);
+            OrderItem orderItem1 = OrderItem.createOrderItem(book1, 10000, 4);
             em.persist(orderItem1);
-            OrderItem orderItem2 = OrderItem.createOrderItem(book2, 20000, 100);
+            OrderItem orderItem2 = OrderItem.createOrderItem(book2, 20000, 5);
             em.persist(orderItem2);
 
             Delivery delivery = createDelivery(member);
