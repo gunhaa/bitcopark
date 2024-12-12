@@ -32,7 +32,7 @@ public class OrderSimpleAPIController {
 
     @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1() {
-        List<Order> all = orderRepository.findAll(new OrderSearch());
+        List<Order> all = orderRepository.findAllByString(new OrderSearch());
         all.forEach(order -> {
             order.getMember().getName();
             order.getOrderItems().forEach(orderItem -> orderItem.getItem().getName());
@@ -46,7 +46,7 @@ public class OrderSimpleAPIController {
     public List<SimpleOrderDto> ordersV2() {
         // ORDER 2개
         // N + 1 -> 1 + 회원 N + 배송 N
-        return orderRepository.findAll(new OrderSearch())
+        return orderRepository.findAllByString(new OrderSearch())
                 .stream()
                 .map(SimpleOrderDto::new)
                 .collect(toList());
