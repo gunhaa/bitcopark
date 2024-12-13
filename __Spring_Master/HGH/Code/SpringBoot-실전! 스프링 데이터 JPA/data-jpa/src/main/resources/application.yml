@@ -1,0 +1,39 @@
+#spring:
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/test
+#    username: aa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#jpa:
+#  hibernate:
+#    ddl-auto: create
+#  properties:
+#    hibernate:
+#      #show_sql : true JPA가 실행하는 쿼리를 모두 찍는다. 콘솔에
+#      format_sql: true
+#
+#logging.level:
+#  level:
+#    org.hibernate.SQL: debug
+##    org.hibernate.type : trace
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: aa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #       show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
