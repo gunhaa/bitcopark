@@ -8,6 +8,13 @@ import lombok.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"}) // 연관관계 필드는 toString을 하지 않는게 좋다.
+// namedQuery를 등록해서 사용할 수 있다.
+@NamedQuery(
+        name = "Member.findByUsername",
+        query = "select m from Member m where m.username = :username"
+)
+// EntityGraph를 이름으로 사용할 수 있다
+@NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
 public class Member {
 
     @GeneratedValue
