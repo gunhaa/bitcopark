@@ -33,6 +33,14 @@ spring:
         #       show_sql: true
         format_sql: true
 
+  # Page를 글로벌하게 설정할 수 있다.
+  data:
+    web:
+      pageable:
+        default-age-size: 10
+        max-page-size: 2000
+#        one-indexed-parameters: true 1부터 시작하게 하는 옵션 (default = false)
+        # 해당 방법은 설정 property의 값이 맞지않아, 문제가 있다.
 logging:
   level:
     org.hibernate.SQL: debug

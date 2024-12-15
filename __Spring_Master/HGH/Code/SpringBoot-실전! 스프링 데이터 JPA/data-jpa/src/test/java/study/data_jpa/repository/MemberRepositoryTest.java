@@ -315,4 +315,83 @@ class MemberRepositoryTest {
     }
 
 
+    @Test
+    public void queryHint(){
+        // given
+        Member member1 = memberRepository.save(new Member("member1", 10));
+        em.flush();
+        em.clear();
+
+        //when
+        Member findMember = memberRepository.findReadOnlyByUsername("member1");
+        // 체크를 하기 위해 메모리가 필요하다(비용이 든다)
+        // 변경 안할거고 찾기만 할 경우 다른 옵션으로 비용을 최적화 할 수 있다.(hibernate가 기능 제공)
+        findMember.setUsername("member2");
+        // readonly를 사용한다면 더티체킹 쿼리가 나가지 않는다.
+        // 메모리 최적화를 하기때문에 스냅샷이 없어서, 변경 감지가 되지 않는다.
+        // 성능테스트해보고 이점이 있어야 최적화 하는게 좋다.
+        // 실시간 조회 트래픽이 너무 많다면, redis를 사용해야한다.
+        // 그 이전에 성능을 한번 최적화할수있는 방법 중 하나이다.
+
+        /*
+        | **특징**       | **@QueryHints**                            | **@Transactional(readOnly = true)**            |
+        |----------------|--------------------------------------------|-----------------------------------------------|
+        | **적용 대상**  | 특정 JPQL/Native Query에만 적용             | 트랜잭션 내 모든 작업에 적용                   |
+        | **효과**       | Hibernate 1차 캐시에서 관리하지 않음         | JDBC와 Hibernate 모두 읽기 전용 모드로 작동    |
+        | **사용 목적**  | 쿼리 성능 최적화(쓰기 감지 비활성화)         | 트랜잭션 범위에서 읽기 전용 작업 보장          |
+        | **기술 스택 의존성** | Hibernate-specific                     | Spring Framework (JPA 또는 Hibernate와 결합)   |
+        */
+
+        em.flush();
+    }
+
+    @Test
+    public void lock(){
+        //given
+        Member member1 = new Member("member1", 10);
+        memberRepository.save(member1);
+        em.flush();
+        em.clear();
+
+        //when
+        // for update가 추가된 쿼리가 나간다.
+        // 깊은 내용이라 이런것이 있다 정도로 이해하면 된다.
+        // JPA가 제공하는 Lock을 어노테이션으로 쓸 수 있다.
+        // JPA 책 참고(자세한 내용 적혀있음)
+        // 실시간 서비스가 많은 서비스에서 사용하면 별로임
+        Member findMember = memberRepository.findLockByUsername("member1");
+    }
+
+    @Test
+    public void callCustom(){
+        // QueryDSL을 사용할 때 많이 사용한다.
+        // 복잡한 쿼리 사용할 때
+        List<Member> result = memberRepository.findMemberCustom();
+    }
+
+    @Test
+    public void JpaEventBaseEntity() throws Exception{
+
+        //given
+        Member member = new Member("member1");
+        memberRepository.save(member);
+
+        Thread.sleep(100);
+        member.setUsername("member2");
+
+        em.flush(); // @PreUpdate 메소드도 실행된다.
+        em.clear();
+
+        //when
+        Member findMember = memberRepository.findById(member.getId()).get();
+
+        //then
+//        System.out.println("findMember = " + findMember.getCreatedDate());
+////        System.out.println("findMember.getUpdateDate() = " + findMember.getUpdateDate());
+//        System.out.println("findMember.getLastModifiedDate() = " + findMember.getLastModifiedDate());
+//        System.out.println("findMember.getCreatedBy() = " + findMember.getCreatedBy());
+//        System.out.println("findMember.getLastModifiedBy() = " + findMember.getLastModifiedBy());
+
+    }
+
 }

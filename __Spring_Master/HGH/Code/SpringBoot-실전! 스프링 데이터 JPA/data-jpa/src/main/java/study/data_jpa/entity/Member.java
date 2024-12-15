@@ -15,7 +15,11 @@ import lombok.*;
 )
 // EntityGraph를 이름으로 사용할 수 있다
 @NamedEntityGraph(name = "Member.all", attributeNodes = @NamedAttributeNode("team"))
-public class Member {
+                            // 상속해서 Auditing을 구현한다. 객체의 생성, 업데이트 일을 알 수 있다.
+//public class Member extends JpaBaseEntity
+//public class Member extends BaseEntity
+public class Member
+{
 
     @GeneratedValue
     @Id
