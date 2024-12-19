@@ -83,4 +83,16 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Member findLockByUsername(String username);
+
+    //========================================================
+    // 한계가 많다..
+    // DTO로 가져오고 싶을때가 많은데(username으로) 타입 지원이 안된다.
+    // Projections 사용으로 극복 할 수 있다.
+    // 로딩 시점 문법 확인 불가
+    // 동적 쿼리 불가
+    @Query(value = "select * from member where username = ?", nativeQuery = true)
+    Member findByNativeQuery(String username);
+    // 이름 아무거나 써도 됨
+    @Query(value = "select m.member_id as id, m.username, t.name as teamName from member m left join team t",countQuery = "select count(*) from member", nativeQuery = true)
+    Page<MemberProjection> findByNativeProjection(Pageable pageable);
 }
