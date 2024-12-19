@@ -7,12 +7,14 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 import study.querydsl.entity.Hello;
 import study.querydsl.entity.QHello;
 
 @SpringBootTest
 @Transactional
+@Commit // 해당 아노테이션은 롤백이 안되게 한다. 테스트할때 눈으로 데이터 확인이 가능해서 유용함
 class QuerydslApplicationTests {
 
 	@Autowired
