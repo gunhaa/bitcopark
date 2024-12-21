@@ -1,18 +1,20 @@
 package bitcopark.library.service;
 
 import bitcopark.library.entity.board.Category;
-import bitcopark.library.exception.CategoryException;
+import bitcopark.library.exception.CategoryNotFoundException;
 import bitcopark.library.repository.CategoryRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Transactional
 class CategoryServiceTest {
 
     @Autowired
@@ -45,7 +47,7 @@ class CategoryServiceTest {
         Category category = categoryService.createNewCategory("역사");
 
         //when , then
-        assertThrows(CategoryException.class, ()->{
+        assertThrows(CategoryNotFoundException.class, ()->{
             categoryService.createNewCategory("역사");
         });
     }
@@ -68,7 +70,7 @@ class CategoryServiceTest {
 
         //given , when , then
 
-        Assertions.assertThrows(CategoryException.class, ()->{
+        Assertions.assertThrows(CategoryNotFoundException.class, ()->{
             Category findCategory = categoryService.createCategoryObject("역사");
         });
 

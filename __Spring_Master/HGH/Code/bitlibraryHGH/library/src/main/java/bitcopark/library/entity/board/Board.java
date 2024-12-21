@@ -1,18 +1,20 @@
 package bitcopark.library.entity.board;
 
 import bitcopark.library.entity.member.Member;
-import bitcopark.library.entity.util.BaseTimeEntity;
+import bitcopark.library.entity.util.BaseAuditEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board extends BaseTimeEntity {
+public class Board extends BaseAuditEntity {
 
     @Id
     @GeneratedValue
@@ -36,6 +38,9 @@ public class Board extends BaseTimeEntity {
     @JoinColumn(name = "category_id")
     @OneToOne(fetch = FetchType.LAZY)
     private Category category;
+
+    @OneToMany(mappedBy = "board")
+    private List<Reply> replyList = new ArrayList<>();
 
     public static Board createBoard(Member member, String title, String content, SecretFlag secretFlag,Category category){
         Board board = new Board();

@@ -4,21 +4,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class EmailDuplicateException extends RuntimeException {
-
-    public EmailDuplicateException() {
+public class CategoryNotFoundException extends RuntimeException {
+    public CategoryNotFoundException() {
         super();
     }
 
-    public EmailDuplicateException(String message) {
+    public CategoryNotFoundException(String message) {
         super(message);
     }
 
-    public EmailDuplicateException(String message, Throwable cause) {
+    public CategoryNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public EmailDuplicateException(Throwable cause) {
+    public CategoryNotFoundException(Throwable cause) {
         super(cause);
     }
 }

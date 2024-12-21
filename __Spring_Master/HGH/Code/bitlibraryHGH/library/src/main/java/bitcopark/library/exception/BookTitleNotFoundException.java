@@ -4,21 +4,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
-public class EmailDuplicateException extends RuntimeException {
+public class BookTitleNotFoundException extends RuntimeException {
 
-    public EmailDuplicateException() {
+    public BookTitleNotFoundException() {
         super();
     }
 
-    public EmailDuplicateException(String message) {
+    public BookTitleNotFoundException(String message) {
         super(message);
     }
 
-    public EmailDuplicateException(String message, Throwable cause) {
+    public BookTitleNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public EmailDuplicateException(Throwable cause) {
+    public BookTitleNotFoundException(Throwable cause) {
         super(cause);
     }
 }

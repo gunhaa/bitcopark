@@ -69,7 +69,7 @@ class BoardServiceTest {
     }
 
     @BeforeEach
-    public void initBoardTest(){
+    public void 카테고리_생성(){
         categoryService.createNewCategory("역사");
     }
 

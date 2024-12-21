@@ -1,7 +1,9 @@
 package bitcopark.library.entity.member;
 
+import bitcopark.library.entity.Book.BookFavorite;
 import bitcopark.library.entity.board.Board;
-import bitcopark.library.entity.util.BaseTimeEntity;
+import bitcopark.library.entity.board.Reply;
+import bitcopark.library.entity.util.BaseAuditEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -15,7 +17,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"email", "name", "phoneNumber", "gender", "birth", "address", "delFlag", "authority"})
-public class Member extends BaseTimeEntity {
+public class Member extends BaseAuditEntity {
 
     @Id
     @GeneratedValue
@@ -37,6 +39,12 @@ public class Member extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "member")
     private List<Board> boardList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Reply> replyList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<BookFavorite> bookFavoriteList = new ArrayList<>();
 
 
     public static Member createMember(String email, String name, String phoneNumber, MemberGender gender, int birth, Address address) {
