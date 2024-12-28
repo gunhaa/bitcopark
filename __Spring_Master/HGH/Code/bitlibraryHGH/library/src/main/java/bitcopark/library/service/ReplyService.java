@@ -18,7 +18,11 @@ public class ReplyService {
     @Transactional
     public Reply addReply(String content, Member member, Board board){
 
-        Reply reply = Reply.createReply(content, member, board);
+        Reply reply = Reply.builder()
+                .content(content)
+                .member(member)
+                .board(board)
+                .build();
         replyRepository.save(reply);
 
         return reply;

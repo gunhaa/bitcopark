@@ -1,13 +1,14 @@
-package bitcopark.library.service;
+package bitcopark.library.service.Board;
 
 import bitcopark.library.entity.board.Board;
+import bitcopark.library.entity.board.BoardImg;
 import bitcopark.library.entity.board.Category;
-import bitcopark.library.entity.board.Reply;
 import bitcopark.library.entity.board.SecretFlag;
 import bitcopark.library.entity.member.Address;
 import bitcopark.library.entity.member.Member;
 import bitcopark.library.entity.member.MemberGender;
-import bitcopark.library.repository.ReplyRepository;
+import bitcopark.library.repository.BoardImgRepository;
+import bitcopark.library.service.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,48 +18,55 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
-@Transactional
 @SpringBootTest
-class ReplyServiceIntegrationTest {
+@Transactional
+public class BoardImgServiceTest {
 
     @Autowired
     MemberService memberService;
 
     @Autowired
-    CategoryService categoryService;
-
-    @Autowired
     BoardService boardService;
 
     @Autowired
-    ReplyService replyService;
+    CategoryService categoryService;
 
     @Autowired
-    ReplyRepository replyRepository;
+    BoardImgService boardImgService;
+
+    @Autowired
+    BoardImgRepository boardImgRepository;
+
 
     private Board board;
     private Member member;
 
     @Test
-    public void 댓글작성_게시글댓글조회_테스트(){
-        //given
-        String replyContent = "댓글작성";
+    public void 게시글_이미지_추가(){
 
-        Reply reply = replyService.addReply(replyContent, member, board);
 
         //when
-        Optional<List<Reply>> replyInBoard = replyRepository.findByBoard(board);
+        String originalImg = "originalName";
+        int orderImg = 1;
+
+        boardImgService.addBoardImg(board, originalImg, orderImg);
 
         //then
-        Assertions.assertThat(reply).isEqualTo(replyInBoard.get().get(0));
+
+        List<BoardImg> imagesInBoard = boardImgRepository.findByBoard(board)
+                .orElseThrow(() -> new IllegalArgumentException("test error"));
+
+        Assertions.assertThat(imagesInBoard.size()).isEqualTo(1);
 
     }
 
     @BeforeEach
-    public void 멤버_게시글_카테고리_생성(){
+    public void 멤버_게시글_카테고리_생성() {
+        //given
+
         //멤버 생성
+
         String email = "test@email.com";
         String name = "member1";
         String phoneNumber = "01012345678";
@@ -78,6 +86,7 @@ class ReplyServiceIntegrationTest {
         SecretFlag secretFlag = SecretFlag.N;
 
         board = boardService.writePost(member, title, content, secretFlag, category);
+
     }
 
-}
+    }

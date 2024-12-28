@@ -1,8 +1,9 @@
-package bitcopark.library.service;
+package bitcopark.library.service.Board;
 
 import bitcopark.library.entity.board.Category;
 import bitcopark.library.exception.CategoryNotFoundException;
 import bitcopark.library.repository.CategoryRepository;
+import bitcopark.library.service.CategoryService;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,8 +24,6 @@ class CategoryServiceTest {
     @Autowired
     CategoryRepository categoryRepository;
 
-    @Autowired
-    EntityManager em;
 
 
     @Test

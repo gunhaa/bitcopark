@@ -28,6 +28,18 @@ public class MemberService {
         return member;
     }
 
+    @Transactional
+    public Member joinAdmin(String email, String name, String phoneNumber, MemberGender gender, int birth, Address address){
+
+        validateDuplicateMember(email);
+
+        Member member = Member.createAdmin(email, name, phoneNumber, gender, birth, address);
+
+        memberRepository.save(member);
+
+        return member;
+    }
+
     private void validateDuplicateMember(String email) {
         if (memberRepository.existsByEmail(email)) {
             throw new EmailDuplicateException("중복된 이메일입니다.");

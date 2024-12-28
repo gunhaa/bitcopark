@@ -1,6 +1,7 @@
 package bitcopark.library.service;
 
 import bitcopark.library.entity.board.Category;
+import bitcopark.library.entity.member.Member;
 import bitcopark.library.exception.CategoryNotFoundException;
 import bitcopark.library.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,9 @@ public class CategoryService {
     // ADMIN만 사용가능한 메서드
     @Transactional
     public Category createNewCategory(String categoryName){
-        Category category = new Category(categoryName);
+        Category category = Category.builder()
+                .categoryName(categoryName)
+                .build();
 
         validateDuplicateCategoryName(categoryName);
 

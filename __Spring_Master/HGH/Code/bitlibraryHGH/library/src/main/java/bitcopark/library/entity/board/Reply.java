@@ -4,13 +4,13 @@ package bitcopark.library.entity.board;
 import bitcopark.library.entity.member.Member;
 import bitcopark.library.entity.util.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Reply extends BaseAuditEntity {
 
     @Id
@@ -21,7 +21,8 @@ public class Reply extends BaseAuditEntity {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    private ReplyDelFlag flag;
+    @Builder.Default
+    private ReplyDelFlag replyDelFlag = ReplyDelFlag.N;;
 
     @JoinColumn(name = "member_id")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,14 +31,5 @@ public class Reply extends BaseAuditEntity {
     @JoinColumn(name = "board_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Board board;
-
-    public static Reply createReply(String content, Member member, Board board){
-        Reply reply = new Reply();
-        reply.content = content;
-        reply.member = member;
-        reply.board = board;
-        reply.flag = ReplyDelFlag.N;
-        return reply;
-    }
 
 }

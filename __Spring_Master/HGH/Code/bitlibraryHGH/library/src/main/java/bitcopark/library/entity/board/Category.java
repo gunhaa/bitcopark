@@ -1,14 +1,16 @@
 package bitcopark.library.entity.board;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category {
 
@@ -18,23 +20,10 @@ public class Category {
     private Long id;
     private String categoryName;
 
-    @OneToOne(mappedBy = "category", fetch = FetchType.LAZY)
-    private Board board;
 
-    public Category(String categoryName) {
-        this.categoryName = categoryName;
-    }
+    @OneToMany(mappedBy = "category")
+    @Builder.Default
+    private List<Board> boardList = new ArrayList<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
-        return Objects.equals(id, category.id) && Objects.equals(categoryName, category.categoryName) && Objects.equals(board, category.board);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, categoryName, board);
-    }
 }

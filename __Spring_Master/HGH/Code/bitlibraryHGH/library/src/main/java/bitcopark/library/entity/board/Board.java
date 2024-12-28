@@ -3,16 +3,15 @@ package bitcopark.library.entity.board;
 import bitcopark.library.entity.member.Member;
 import bitcopark.library.entity.util.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board extends BaseAuditEntity {
 
@@ -27,44 +26,42 @@ public class Board extends BaseAuditEntity {
 
     private String title;
     private String content;
-    private Long count;
+
+    @Builder.Default
+    private Long count = 0L;
 
     @Enumerated(EnumType.STRING)
-    private BoardDelFlag flag;
+    private BoardDelFlag boardDelFlag;
 
     @Enumerated(EnumType.STRING)
-    private SecretFlag secret;
+    private SecretFlag secretFlag;
 
     @JoinColumn(name = "category_id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board", orphanRemoval = true)
+    @Builder.Default
     private List<Reply> replyList = new ArrayList<>();
 
-    public static Board createBoard(Member member, String title, String content, SecretFlag secretFlag,Category category){
-        Board board = new Board();
-        board.member = member;
-        board.title = title;
-        board.content = content;
-        board.count = 0L;
-        board.flag = BoardDelFlag.N;
-        board.secret = secretFlag;
-        board.category = category;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "classSchedule_id")
+    private ClassSchedule classSchedule;
 
-        return board;
+    @OneToMany(mappedBy = "board", orphanRemoval = true)
+    @Builder.Default
+    private List<BoardImg> boardImgList = new ArrayList<>();
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "anotherLibrary_id")
+    private AnotherLibrary anotherLibrary;
+
+    // 소프트 삭제라면 해당 자식 객체들도 전부 상태가 바뀌어야하는가?
+    public BoardDelFlag changeBoardDelFlag(){
+        this.boardDelFlag = this.boardDelFlag == BoardDelFlag.Y ? BoardDelFlag.N :  BoardDelFlag.Y;
+        return this.boardDelFlag;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Board board = (Board) o;
-        return Objects.equals(id, board.id) && Objects.equals(member, board.member) && Objects.equals(title, board.title) && Objects.equals(content, board.content) && Objects.equals(count, board.count) && flag == board.flag && secret == board.secret && Objects.equals(category, board.category);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, member, title, content, count, flag, secret, category);
-    }
+
 }
