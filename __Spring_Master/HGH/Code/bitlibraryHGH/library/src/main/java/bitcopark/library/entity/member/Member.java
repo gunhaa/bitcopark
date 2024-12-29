@@ -1,14 +1,14 @@
 package bitcopark.library.entity.member;
 
+import bitcopark.library.entity.Book.BookBorrow;
 import bitcopark.library.entity.Book.BookFavorite;
-import bitcopark.library.entity.board.Board;
-import bitcopark.library.entity.board.Reply;
-import bitcopark.library.entity.util.BaseAuditEntity;
+import bitcopark.library.entity.Class.ClassApplicant;
+import bitcopark.library.entity.LibrarySeatBooking.SeatReservation;
+import bitcopark.library.entity.Board.Board;
+import bitcopark.library.entity.Board.Reply;
+import bitcopark.library.entity.Audit.BaseAuditEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +37,29 @@ public class Member extends BaseAuditEntity {
     private MemberDelFlag delFlag;
     private MemberAuthority authority;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+    //    @Builder.Default
     private List<Board> boardList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+    //    @Builder.Default
     private List<Reply> replyList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+//    @Builder.Default
     private List<BookFavorite> bookFavoriteList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+//    @Builder.Default
+    private List<ClassApplicant> classApplicantList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+//    @Builder.Default
+    private List<BookBorrow> bookBorrowList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", orphanRemoval = true)
+//    @Builder.Default
+    private List<SeatReservation> seatReservationList = new ArrayList<>();
 
     public static Member createMember(String email, String name, String phoneNumber, MemberGender gender, int birth, Address address) {
         Member member = new Member();

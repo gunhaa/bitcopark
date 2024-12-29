@@ -1,20 +1,20 @@
 package bitcopark.library.service.Board;
 
-import bitcopark.library.entity.board.Board;
-import bitcopark.library.entity.board.BoardImg;
-import bitcopark.library.entity.board.Category;
-import bitcopark.library.entity.board.SecretFlag;
+import bitcopark.library.entity.Board.Board;
+import bitcopark.library.entity.Board.BoardImg;
+import bitcopark.library.entity.Board.Category;
+import bitcopark.library.entity.Board.SecretFlag;
 import bitcopark.library.entity.member.Address;
 import bitcopark.library.entity.member.Member;
 import bitcopark.library.entity.member.MemberGender;
-import bitcopark.library.repository.BoardImgRepository;
-import bitcopark.library.service.*;
+import bitcopark.library.repository.Board.BoardImgRepository;
+import bitcopark.library.service.Member.MemberService;
+import jakarta.persistence.EntityManager;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -38,13 +38,15 @@ public class BoardImgServiceTest {
     @Autowired
     BoardImgRepository boardImgRepository;
 
+    @Autowired
+    EntityManager em;
+
 
     private Board board;
     private Member member;
 
     @Test
     public void 게시글_이미지_추가(){
-
 
         //when
         String originalImg = "originalName";
@@ -54,10 +56,37 @@ public class BoardImgServiceTest {
 
         //then
 
-        List<BoardImg> imagesInBoard = boardImgRepository.findByBoard(board)
-                .orElseThrow(() -> new IllegalArgumentException("test error"));
+        List<BoardImg> imagesInBoard = boardImgRepository.findByBoard(board);
 
         Assertions.assertThat(imagesInBoard.size()).isEqualTo(1);
+
+    }
+
+
+    @Test
+    public void 게시글_이미지_삭제(){
+
+        //given
+        String originalImg = "originalName";
+        int orderImg = 1;
+
+        BoardImg boardImg = boardImgService.addBoardImg(board, originalImg, orderImg);
+
+        //when
+
+        boardImgService.deleteBoardImg(boardImg);
+
+        //then
+
+        //**
+//        Optional<List<BoardImg>> findBoard = boardImgRepository.findByBoard(board);
+        // optional의 빈 리스트는 isEmpty()가 false가 나온다.
+//        System.out.println("findBoard.isEmpty() = " + findBoard.isEmpty());
+
+
+        List<BoardImg> findImgs = boardImgRepository.findByBoard(board);
+
+        Assertions.assertThat(findImgs.size()).isEqualTo(0);
 
     }
 
@@ -89,4 +118,4 @@ public class BoardImgServiceTest {
 
     }
 
-    }
+}

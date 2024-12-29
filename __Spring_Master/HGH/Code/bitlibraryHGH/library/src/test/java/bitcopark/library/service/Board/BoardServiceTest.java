@@ -1,16 +1,14 @@
 package bitcopark.library.service.Board;
 
-import bitcopark.library.entity.board.Board;
-import bitcopark.library.entity.board.Category;
-import bitcopark.library.entity.board.SecretFlag;
+import bitcopark.library.entity.Board.Board;
+import bitcopark.library.entity.Board.Category;
+import bitcopark.library.entity.Board.SecretFlag;
 import bitcopark.library.entity.member.Address;
 import bitcopark.library.entity.member.Member;
 import bitcopark.library.entity.member.MemberGender;
-import bitcopark.library.repository.BoardRepository;
-import bitcopark.library.repository.CategoryRepository;
-import bitcopark.library.service.BoardService;
-import bitcopark.library.service.CategoryService;
-import bitcopark.library.service.MemberService;
+import bitcopark.library.repository.Board.BoardRepository;
+import bitcopark.library.repository.Board.CategoryRepository;
+import bitcopark.library.service.Member.MemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,20 +1,15 @@
 package bitcopark.library.service.Board;
 
-import bitcopark.library.entity.board.*;
+import bitcopark.library.entity.Board.*;
 import bitcopark.library.entity.member.Address;
 import bitcopark.library.entity.member.Member;
 import bitcopark.library.entity.member.MemberGender;
-import bitcopark.library.repository.BoardRepository;
-import bitcopark.library.service.BoardService;
-import bitcopark.library.service.CategoryService;
-import bitcopark.library.service.MemberService;
-import bitcopark.library.service.ReplyService;
-import org.assertj.core.api.Assertions;
+import bitcopark.library.repository.Board.BoardRepository;
+import bitcopark.library.service.Member.MemberService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

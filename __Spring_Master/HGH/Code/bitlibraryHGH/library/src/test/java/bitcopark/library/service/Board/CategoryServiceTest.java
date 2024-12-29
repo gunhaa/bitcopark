@@ -1,10 +1,8 @@
 package bitcopark.library.service.Board;
 
-import bitcopark.library.entity.board.Category;
+import bitcopark.library.entity.Board.Category;
 import bitcopark.library.exception.CategoryNotFoundException;
-import bitcopark.library.repository.CategoryRepository;
-import bitcopark.library.service.CategoryService;
-import jakarta.persistence.EntityManager;
+import bitcopark.library.repository.Board.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
