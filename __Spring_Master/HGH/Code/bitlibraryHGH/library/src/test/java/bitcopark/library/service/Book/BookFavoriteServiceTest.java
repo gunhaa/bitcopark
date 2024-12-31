@@ -37,7 +37,6 @@ class BookFavoriteServiceTest {
     private Book book;
 
     @Test
-    @Commit
     public void 즐겨찾기_등록(){
         //when
         bookFavoriteService.addBookFavorite(book, member);

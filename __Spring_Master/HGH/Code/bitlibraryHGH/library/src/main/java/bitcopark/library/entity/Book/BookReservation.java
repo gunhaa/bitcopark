@@ -5,6 +5,7 @@ import bitcopark.library.entity.member.Member;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -28,8 +29,5 @@ public class BookReservation {
     private Book book;
 
     @Builder.Default
-    private LocalDateTime reservationDate = LocalDateTime.now();
-
-
-
+    private LocalDate reservationDate = LocalDateTime.now().toLocalDate();
 }

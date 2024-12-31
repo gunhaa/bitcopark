@@ -61,6 +61,7 @@ public class Member extends BaseAuditEntity {
 //    @Builder.Default
     private List<SeatReservation> seatReservationList = new ArrayList<>();
 
+    // member/admin만 파라미터로 받아서 하나의 메서드로 통합
     public static Member createMember(String email, String name, String phoneNumber, MemberGender gender, int birth, Address address) {
         Member member = new Member();
         member.email = email;

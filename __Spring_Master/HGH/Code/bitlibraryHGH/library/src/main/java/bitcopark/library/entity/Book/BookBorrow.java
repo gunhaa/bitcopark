@@ -4,6 +4,7 @@ import bitcopark.library.entity.member.Member;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,10 +28,10 @@ public class BookBorrow {
     private Member member;
 
     @Builder.Default
-    private LocalDateTime borrowDate = LocalDateTime.now();
+    private LocalDate borrowDate = LocalDateTime.now().toLocalDate();
 
     @Builder.Default
-    private LocalDateTime returnDueDate = LocalDateTime.now().plusDays(14);
+    private LocalDate returnDueDate = LocalDateTime.now().plusDays(14).toLocalDate();
 
     private LocalDateTime returnDate;
 

@@ -19,6 +19,7 @@ public abstract class BaseAuditEntity {
 
     @CreatedDate
     @Column(updatable = false, name = "created_date")
+    // 기본 전략이 있으면, 추가적으로 명확하게 적을 것인지에 대해서
     private LocalDateTime createdDate;
 
     @LastModifiedDate
