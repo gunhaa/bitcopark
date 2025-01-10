@@ -2,7 +2,10 @@
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/querydsl
-    username: sa
+#    데스크톱
+#    username: sa
+#    노트북
+    username: aa
     password:
     driver-class-name: org.h2.Driver
   jpa:
