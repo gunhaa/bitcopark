@@ -2,7 +2,7 @@
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/querydsl
-    username: aa
+    username: sa
     password:
     driver-class-name: org.h2.Driver
   jpa:
@@ -13,6 +13,8 @@ spring:
       hibernate:
     #        show_sql: true
         format_sql: true
+        # QueryDSL의 JPQL을 주석으로 콘솔에서 볼 수 있다.
+        use_sql_comments: true
 logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace
