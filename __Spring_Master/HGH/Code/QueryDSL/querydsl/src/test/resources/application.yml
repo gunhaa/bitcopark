@@ -3,7 +3,7 @@ spring:
   # 테스트데이터 관련 설정
   # main과 test환경을 분리한다
   profiles:
-    active: local
+    active: test
   datasource:
     url: jdbc:h2:tcp://localhost/~/querydsl
 #    데스크톱

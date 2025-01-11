@@ -1,9 +1,12 @@
 package study.querydsl;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.ExpressionUtils;
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
@@ -19,6 +22,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import study.querydsl.dto.MemberDto;
 import study.querydsl.dto.QMemberDto;
 import study.querydsl.dto.UserDto;
@@ -759,6 +763,186 @@ public class QuerydslBasicTest {
 
     }
 
+    // 동적쿼리를 사용하는 두가지 방법
+    @Test
+    public void dynamicQuery_BooleanBuilder(){
 
+        String usernameParam = "member1";
+        Integer ageParam = null;
+
+        List<Member> result = searchMember1(usernameParam, ageParam);
+        Assertions.assertThat(result.size()).isEqualTo(1);
+    }
+
+    private List<Member> searchMember1(String usernameCond, Integer ageCond) {
+                                                // 초기 조건을 넣을 수 있다.
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if(usernameCond != null){
+            builder.and(m.username.eq(usernameCond));
+        }
+
+        if(ageCond != null){
+            builder.and(m.age.eq(ageCond));
+        }
+
+        return queryFactory
+                .selectFrom(m)
+                .where(builder)
+                .fetch();
+    }
+
+    @Test
+    public void dynamicQuery_WhereParam(){
+        String usernameParam = "member1";
+        Integer ageParam = 10;
+
+        List<Member> result = searchMember2(usernameParam, ageParam);
+        Assertions.assertThat(result.size()).isEqualTo(1);
+    }
+
+    private List<Member> searchMember2(String usernameCond, Integer ageCond) {
+        return queryFactory
+                .selectFrom(m)
+//                .where(usernameEq(usernameCond), ageEq(ageCond))
+                // 이런식으로 가능하다
+                .where(allEq(usernameCond, ageCond))
+                .fetch();
+    }
+
+    // booleanExpression으로 받을 수 있음 인터페이스라서
+//    private Predicate usernameEq(String usernameCond) {
+    private BooleanExpression usernameEq(String usernameCond) {
+//        if(usernameCond == null){
+//            return null;
+//        }
+//        return m.username.eq(usernameCond);
+        // 동일 코드지만 가독성이 더 좋다
+        return usernameCond != null ? m.username.eq(usernameCond) : null;
+    }
+    // booleanExpression으로 받을 수 있음 인터페이스라서
+//    private Predicate ageEq(Integer ageCond) {
+    private BooleanExpression ageEq(Integer ageCond) {
+        if(ageCond == null){
+            return null;
+        }
+        return m.age.eq(ageCond);
+    }
+    
+//    private Predicate allEq(String usernameCond, Integer ageCond){
+    // 이런식으로도 쓸 수 있음
+    // 조립을 할 수 있는 것이 큰 장점이다.
+    // 재활용도 할 수 있어서 큰 장점이다.
+    private BooleanExpression allEq(String usernameCond, Integer ageCond){
+        return usernameEq(usernameCond).and(ageEq(ageCond));
+    }
+
+    @Test
+    @Commit
+    public void bulkUpdate(){
+
+
+
+        // 영향을 받은 row수
+        long count = queryFactory
+                .update(m)
+                .set(m.username, "비회원")
+                .where(m.age.lt(28))
+                .execute();
+        
+        // 쿼리 실행 전
+        // 영속성 컨텍스트 ||  DB 상태
+        // member1 = 10 -> DB member1
+        // member2 = 20 -> DB member2
+        // member3 = 30 -> DB member3
+        // member4 = 40 -> DB member4
+
+        // 쿼리가 실행 된 이후 ..
+        // 영속성 컨텍스트 ||  DB 상태
+        // member1 = 10 -> DB 비회원
+        // member2 = 20 -> DB 비회원
+        // member3 = 30 -> DB member3
+        // member4 = 40 -> DB member4
+        // 영속성 컨텍스트는 그대로 남아있지만, DB는 바뀌는게 update문이다.
+        // 이런 상황에서 DB에서 해당 코드로 select를 해온다면?
+//        List<Member> result = queryFactory
+//                .selectFrom(m)
+//                .fetch();
+        // 해당 코드가 실행된다면, DB와 영속성 컨텍스트의 상황이 불일치하게 된다.
+        // 그러면 JPA는 가져온 데이터를 영속성 컨텍스트에서 넣을 때 영속성 컨텍스트에 우선권을 부여해,
+        // DB에서 가져온 정보를 버리게 된다.
+
+        // 그럼 해결 방법은?
+        // 이렇게하면 해결이 가능하다
+        em.flush();
+        em.clear();
+        // 영속성 컨텍스트 초기화 시키고 select 실행
+        List<Member> result = queryFactory
+                .selectFrom(m)
+                .fetch();
+        for (Member member : result) {
+            System.out.println("member = " + member);
+        }
+        
+    }
+
+    @Test
+    @Commit
+    public void bulkAdd(){
+        long count = queryFactory
+                .update(m)
+                // 더하기
+//                .set(m.age, m.age.add(1))
+                // 곱하기
+                .set(m.age, m.age.multiply(2))
+                .execute();
+    }
+
+    @Test
+    @Commit
+    public void bulkDelete(){
+        long count = queryFactory
+                .delete(m)
+                // 18살 이상 모두 삭제
+                .where(m.age.gt(18))
+                .execute();
+    }
+
+    @Test
+    public void sqlFunction(){
+
+        // sql function 호출하는 방법
+        // replace를 호출한다.
+        // idalect에 등록이 되있어야 사용이 가능하다
+        List<String> result = queryFactory
+                .select(Expressions.stringTemplate(
+                        "function('replace', {0}, {1}, {2})",
+                        m.username, "member", "M"))
+                .from(m)
+                .fetch();
+
+        for (String s : result) {
+            System.out.println("s = " + s);
+        }
+
+    }
+
+    @Test
+    public void sqlFunction2(){
+
+        List<String> result = queryFactory
+                .select(m.username)
+                .from(m)
+                .where(m.username.eq(
+                        // Expressions.stringTemplate("function('lower' , {0})", m.username)))
+                        // ANSI 표준 함수들은 해당 형태로 변환 가능하다(내장되어있다)
+                        m.username.lower()))
+                .fetch();
+
+        for (String s : result) {
+            System.out.println("s = " + s);
+        }
+
+    }
 
 }
