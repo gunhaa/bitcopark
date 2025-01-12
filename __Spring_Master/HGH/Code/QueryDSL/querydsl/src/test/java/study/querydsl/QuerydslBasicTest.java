@@ -838,7 +838,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
-    @Commit
+//    @Commit
     public void bulkUpdate(){
 
 
@@ -887,7 +887,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
-    @Commit
+//    @Commit
     public void bulkAdd(){
         long count = queryFactory
                 .update(m)
@@ -899,7 +899,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
-    @Commit
+//    @Commit
     public void bulkDelete(){
         long count = queryFactory
                 .delete(m)
