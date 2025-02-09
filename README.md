@@ -46,7 +46,7 @@
   - JAVA - Thread
   - JPA
 - [5주차](/Recap/Week5.md)
-  - 계속해서 진행 할 과제
+  - 진행 과제(5~11주차 진행중, https://github.com/gunhaa/bitlibrary)
   ![week5](Recap/images/Week5.png)
 ```plaintext
 건하는 도서관 사업을 시작하기 위해 그림처럼 ERD를 설계하였습니다.  
