@@ -46,7 +46,11 @@
   - JAVA - Thread
   - JPA
 - [5주차](/Recap/Week5.md)
-  - 진행 과제(5~11주차 진행중, https://github.com/gunhaa/bitlibrary)
+  - 진행 과제(5~11주차로 완료, https://github.com/gunhaa/bitlibrary)
+    - SpringBoot/JPA를 통해 백엔드 구축 완료
+    - Thymeleaf/Js로 프론트엔드 구축 완료 
+    - Jenkins/Docker/AWS Ec2를 통한 CI/CD 구축완료
+  
   ![week5](Recap/images/Week5.png)
 ```plaintext
 건하는 도서관 사업을 시작하기 위해 그림처럼 ERD를 설계하였습니다.  
@@ -77,6 +81,7 @@
 2. 관련 문서는 md 폴더에 `bitlibrary` 로 저장해 주세요
 3. start.spring.io에서 Group : `bitcopark` , Artifact : `library` 로 만들어주세요
 ```
+
 
 
 ###  소스 코드 업로드
