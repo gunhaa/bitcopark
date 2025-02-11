@@ -46,7 +46,7 @@
   - JAVA - Thread
   - JPA
 - [5주차](/Recap/Week5.md)
-  - 진행 과제(5~11주차로 완료, https://github.com/gunhaa/bitlibrary)
+  - 프로젝트 진행(5~11주차로 완료, https://github.com/gunhaa/bitlibrary, http://bitlibrary.kro.kr)
     - SpringBoot/JPA를 통해 백엔드 구축 완료
     - Thymeleaf/Js로 프론트엔드 구축 완료 
     - Jenkins/Docker/AWS Ec2를 통한 CI/CD 구축완료
@@ -75,11 +75,13 @@
    특정 사용자의 대여 이력을 기반으로 맞춤형 추천 목록을 제공하는 알고리즘을 구상하고 구현해주세요.
 7. 책을 이용한 여러가지 서비스를 많이 추가할 예정이라 확장 가능한 구조로 만들어주세요.
 8. 건하는 앞으로 수 년간 도서관을 운영할 예정이여서 유지보수 하기 쉬운 구조를 원합니다.
+9. 해당 과제를 발전시켜서 프로젝트로 진행합니다.(https://github.com/gunhaa/bitlibrary)
 
 ** 생성 방법 **
 1. 새로운 브랜치 생성 후 (Week n) 각자의 Code 폴더에 `bitlibrary${이니셜}` 로 폴더를 생성해주세요 
 2. 관련 문서는 md 폴더에 `bitlibrary` 로 저장해 주세요
 3. start.spring.io에서 Group : `bitcopark` , Artifact : `library` 로 만들어주세요
+
 ```
 
 
