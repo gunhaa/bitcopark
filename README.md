@@ -1,5 +1,5 @@
 
-## 깊이있는 개발자가 되기 위한 스터디🔥
+## 깊이있는 개발자가 되기 위한 스터디
 
 - 깊이있는 개발자가 될때까지 동안 진행되는 **CS & Spring boot 학습 & Spring MVC 프로젝트 리팩토링** 입니다.
 - 매 주 **✔월요일 오전10:00** 까지 Jira를 통해 주어진 학습 목표를 완료하고, 광진구 1인 가구 센터에 모여서 5~6시간 동안 스터디를 진행합니다.
@@ -46,10 +46,14 @@
   - JAVA - Thread
   - JPA
 - [5주차](/Recap/Week5.md)
-  - 프로젝트 진행(5~11주차로 완료, https://github.com/gunhaa/bitlibrary, http://bitlibrary.kro.kr)
-    - SpringBoot/JPA를 통해 백엔드 구축 완료
-    - Thymeleaf/Js로 프론트엔드 구축 완료 
-    - Jenkins/Docker/AWS Ec2를 통한 CI/CD 구축완료
+  - 프로젝트 진행(5~11주차)
+    - Github : https://github.com/gunhaa/bitlibrary
+    - domain : http://bitlibrary.kro.kr 
+    - be: Spring Boot, JPA
+    - fe: Thymeleaf, JavaScript
+    - db: MySQL, H2
+    - CI/CD: Jenkins, Docker, AWS EC2
+    - Test: JUnit
   
   ![week5](Recap/images/Week5.png)
 ```plaintext
