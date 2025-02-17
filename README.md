@@ -48,7 +48,7 @@
 - [5주차](/Recap/Week5.md)
   - 프로젝트 진행(5~11주차)
     - Github : https://github.com/gunhaa/bitlibrary
-    - domain : http://bitlibrary.kro.kr 
+    - domain : https://bitlibrary.kro.kr 
     - be: Spring Boot, JPA
     - fe: Thymeleaf, JavaScript
     - db: MySQL, H2
@@ -85,9 +85,13 @@
 1. 새로운 브랜치 생성 후 (Week n) 각자의 Code 폴더에 `bitlibrary${이니셜}` 로 폴더를 생성해주세요 
 2. 관련 문서는 md 폴더에 `bitlibrary` 로 저장해 주세요
 3. start.spring.io에서 Group : `bitcopark` , Artifact : `library` 로 만들어주세요
-
 ```
 
+- [12주차](/Recap/Week12.md)
+  - 신규 인원 2명(김예종, 김인수)
+  - 차후 스터디 계획(OS/Network)
+    - OS : 프로세스 관리
+    - Network : 컴퓨터와 네트워크 인터넷
 
 
 ###  소스 코드 업로드
