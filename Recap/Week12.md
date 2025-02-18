@@ -75,3 +75,5 @@ Chapter 1: 컴퓨터와 네트워크 인터넷
   - https://www.youtube.com/watch?v=isj4sZhoxjk&t=6s&pp=ygUM7Jq07JiB7LK07KCc
   - https://m.blog.naver.com/japchae153/222237698119
   - https://github.com/yonghwankim-dev/OperatingSystem_Study?tab=readme-ov-file
+  - https://www.youtube.com/watch?v=dsoAkoxZ13o
+  - https://www.youtube.com/watch?v=b_V79kE9hhA&pp=ygUM64Sk7Yq47JuM7YGs
