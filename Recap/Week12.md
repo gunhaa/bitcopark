@@ -68,4 +68,10 @@ Chapter 1: 컴퓨터와 네트워크 인터넷
 
 - 진행 방식: 각 주제별 1시간 30분씩 진행
 
-- 각자 브랜치를 생성후 폴더에 내용을 정리해서 다음 주에 진행
+- 각자 브랜치를 생성후 폴더에 내용을 정리해서 진행
+
+- 참고하면 좋을 자료
+  - http://www.kocw.net/home/cview.do?cid=5e94ceee75415112
+  - https://www.youtube.com/watch?v=isj4sZhoxjk&t=6s&pp=ygUM7Jq07JiB7LK07KCc
+  - https://m.blog.naver.com/japchae153/222237698119
+  - https://github.com/yonghwankim-dev/OperatingSystem_Study?tab=readme-ov-file
