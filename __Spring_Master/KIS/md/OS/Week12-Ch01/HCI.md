@@ -1,0 +1,46 @@
+# HCI
+HCI  
+ㄴUser  
+ㄴComputer  
+　ㄴHw  
+　ㄴSw  
+　　ㄴProgram  
+　　　ㄴApp  
+　　　ㄴOS  
+　　ㄴNon-program  
+　　　ㄴ데이터파일  
+　　　　ㄴ데이터저장파일  
+　　　　　ㄴ.txt  
+　　　　　ㄴ.csv  
+　　　　　ㄴ.json  
+　　　　　ㄴ.xml  
+　　　　ㄴ미디어파일  
+　　　　　ㄴ.mp3  
+　　　　　ㄴ.mp4  
+　　　　　ㄴ.jpg  
+　　　　　ㄴ.png   
+　　　　ㄴ문서파일  
+　　　　　ㄴ.docx  
+　　　　　ㄴ.xlsx  
+　　　　　ㄴ.pptx   
+　　　ㄴ설정파일  
+　　　　ㄴ일반설정파일  
+　　　　　ㄴ.ini  
+　　　　　ㄴ.cfg  
+　　　　　ㄴ.env  
+　　　　　ㄴ.yaml   
+　　　　ㄴ웹서버설정파일  
+　　　　　ㄴ.htaccess   
+　　　　ㄴWindows-Registry값  
+　　　ㄴ글꼴파일  
+　　　　ㄴ.ttf  
+　　　　ㄴ.otf  
+　　　ㄴ라이브러리-프레임워크  
+　　　　ㄴ.dll  
+　　　　ㄴ.so  
+　　　　ㄴ.jar  
+　　　ㄴ운영체제(OS)-일부컴포넌트  
+　　　　ㄴ드라이버  
+　　　　ㄴ아이콘  
+　　　　ㄴ테마파일  
+　　　　ㄴ시스템로그파일  
