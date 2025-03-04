@@ -96,6 +96,10 @@
   - OS/Network => 너무 광범위해서 개인 공부로 변경
   - 차후 스터디 계획 => 데이터구조/알고리즘
 
+- [14주차](/Recap/Week14.md)
+  - 2주간 데이터 구조/알고리즘 끝내기 계획수립
+  - PCCP 4월 시험 계획 수립
+  - https://github.com/NangmanHunter/bitcopark-algorithm 에서 진행
 
 ###  소스 코드 업로드
 1. Main branch에서 새 branch를 생성한다.
