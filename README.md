@@ -98,8 +98,13 @@
 
 - [14주차](/Recap/Week14.md)
   - 2주간 데이터 구조/알고리즘 끝내기 계획수립
+  - 데이터 구조 전부 직접 구현
   - PCCP 4월 시험 계획 수립
   - https://github.com/NangmanHunter/bitcopark-algorithm 에서 진행
+
+- [15주차](/Recap/Week15.md)
+  - 알고리즘 오프라인 스터디 진행
+  - 알고리즘 공부 후 구현, 이론 정리
 
 ###  소스 코드 업로드
 1. Main branch에서 새 branch를 생성한다.
