@@ -230,17 +230,23 @@ type : subject
         <a href="https://github.com/gunhaa" title="Code">💻</a>
     </td>
     <td align="center">
-      <a href="https://github.com/">
+      <a href="https://github.com/PaiLv99">
         <img src="https://mud-kage.kakaocdn.net/dn/ddUiy9/btsdGABygpb/MsARp4M5vZdcumFmyHKoN1/c360.jpg" width="110px" height="90px" alt=""/>
         <br />
         <sub><b>배지환</b></sub></a><br />
         <a href="https://github.com/" title="Code">💻</a>
     </td>
     <td align="center">
-      <a href="https://github.com/">
+      <a href="https://github.com/asiocvio">
         <img src="https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/cxuc/image/ouT5pWpIm1C2I8RVqlBhspj_qQA.jpg" width="110px;" height="90px" alt=""/><br />
         <sub><b>이재원</b></sub></a><br />
         <a href="https://github.com/" title="Code">💻</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/">
+        <img src="https://avatars.githubusercontent.com/u/173217464?v=4" width="110px;" height="90px" alt=""/><br />
+        <sub><b>김인수</b></sub></a><br />
+        <a href="https://github.com/NangmanHunter" title="Code">💻</a>
     </td>
   </tr>
 </table>  
